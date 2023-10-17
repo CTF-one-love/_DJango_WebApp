@@ -24,8 +24,11 @@
                     <a href="#" class="text-lg font-semibold hover:text-gray-500">Browse</a>
 
                     <!--Кнопки в шапке для входа и регистрации-->
-                    <a href="#" class="px-6 py-3 text-gl fornt-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sing up</a>
-                    <a href="#" class="px-6 py-3 text-gl fornt-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a>
+                    {% if request.user.is_authentificated  %}
+                    {% else %}
+                        <a href="{% url 'core:signup'%}" class="px-6 py-3 text-gl fornt-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sing up</a>
+                        <a href="{% url 'core:login'%}" class="px-6 py-3 text-gl fornt-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a>
+                    {% endif %}
                 </div>
             </nav>
 
@@ -50,7 +53,7 @@
                     <ul class="space-y-2">
                         <!--В этом блоке у нас ссылки на странички из нижнего блока чайта-->
                         <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">About</a></li>
-                        <li><a href="{% url 'contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact</a></li>
+                        <li><a href="{% url 'core:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact</a></li>
                         <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Privacy Policy</a></li>
                         <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Term of use</a></li>
                     </ul>
